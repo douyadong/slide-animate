@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./flexible.js"></script>
+    <script src="./flexible_css.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*第一种横向滚动*/
+        .outer{
+            overflow-x: scroll;
+            white-space: nowrap;
+        }
+        .outer li{
+            display: inline-block;
+            padding:0 50px;
+        }
+        /*另外一种滚动滑动*/
+        .fe{
+            overflow-x: scroll;
+        }
+        .fe ul{
+            box-sizing: border-box;
+        }
+        .fe li{
+            display: inline-block;
+            padding:0 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <ul>
+            <li>fewfew</li>
+            <li>wfeewfwefew</li>
+            <li>fewefwfew</li>
+            <li>efewfew</li>
+            <li>wefwefew</li>
+            <li>efwefwefwef</li>
+            <li>ewfewfewfewf</li>
+            <li>efwfwfewfew</li>
+            <li>fewfwfewf</li>
+            <li>efwfewfwef</li>
+            <li>feewfwefwefe</li>
+            <li>ewfewfewfewf</li>
+            <li>efwfwfewfew</li>
+            <li>fewfwfewf</li>
+            <li>efwfewfwef</li>
+            <li>feewfwefwefe</li>
+        </ul>
+    </div>
+    <div>fwefewfwewfwefwefwefewfeffwefewffewfewewfeef</div>
+    <div class="fe">
+        <ul>
+            <li>fewfew</li>
+            <li>wfeewfwefew</li>
+            <li>fewefwfew</li>
+            <li>efewfew</li>
+            <li>wefwefew</li>
+            <li>efwefwefwef</li>
+            <li>ewfewfewfewf</li>
+            <li>efwfwfewfew</li><li>fewfew</li>
+            <li>wfeewfwefew</li>
+            <li>fewefwfew</li>
+            <li>efewfew</li>
+            <li>wefwefew</li>
+            <li>efwefwefwef</li>
+            <li>ewfewfewfewf</li>
+            <li>efwfwfewfew</li><li>fewfew</li>
+            <li>wfeewfwefew</li>
+            <li>fewefwfew</li>
+            <li>efewfew</li>
+            <li>wefwefew</li>
+            <li>efwefwefwef</li>
+            <li>ewfewfewfewf</li>
+            <li>efwfwfewfew</li>
+        </ul>
+    </div>
+    <script src="./jquery.min.js"></script>
+    <script>
+        window.onload=function(){
+            var i=0;
+            $('.fe li').each(function(index,e){
+                 i+=$(e).width()+105
+            });
+            $('.fe ul').width(i);//此处为px，可以在行内式写为rem;
+        }
+    </script>
+</body>
+</html>
