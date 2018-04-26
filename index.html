@@ -8,88 +8,64 @@
     <script src="./flexible.js"></script>
     <script src="./flexible_css.js"></script>
     <style>
-        *{
-            margin: 0;
-            padding: 0;
+        .dj{
+            text-align: center;
+            font-size: 1rem;
         }
-        /*第一种横向滚动*/
-        .outer{
-            overflow-x: scroll;
-            white-space: nowrap;
+        .shade{
+            background-color : rgba( 0 , 0 , 0 , .3 ) ;
+            display: none;
+            height:100%;
+            width: 100%;
+            position: fixed;
+            left: 0;
+            top:0;
+            z-index: 9999
         }
-        .outer li{
-            display: inline-block;
-            padding:0 50px;
+        ul{
+            background-color: white;
+            position: fixed;
+            width: 200px;
+            right:-200px;
+            height: 100%;
+            top:0;
+            z-index: 10000;
         }
-        /*另外一种滚动滑动*/
-        .fe{
-            overflow-x: scroll;
+        .c{
+            height:100px;
+            position: relative;
         }
-        .fe ul{
-            box-sizing: border-box;
-        }
-        .fe li{
-            display: inline-block;
-            padding:0 50px;
+        .d{
+            /*fixed是相对于窗口定位，与relative无关，也与body无关，height:100%,是对应的窗口高度*/
+            /*absolute如果父元素无定位，则是相对于body定位*/
+            position: fixed;
+            top:10px;
         }
     </style>
 </head>
 <body>
-    <div class="outer">
-        <ul>
-            <li>fewfew</li>
-            <li>wfeewfwefew</li>
-            <li>fewefwfew</li>
-            <li>efewfew</li>
-            <li>wefwefew</li>
-            <li>efwefwefwef</li>
-            <li>ewfewfewfewf</li>
-            <li>efwfwfewfew</li>
-            <li>fewfwfewf</li>
-            <li>efwfewfwef</li>
-            <li>feewfwefwefe</li>
-            <li>ewfewfewfewf</li>
-            <li>efwfwfewfew</li>
-            <li>fewfwfewf</li>
-            <li>efwfewfwef</li>
-            <li>feewfwefwefe</li>
-        </ul>
-    </div>
-    <div>fwefewfwewfwefwefwefewfeffwefewffewfewewfeef</div>
-    <div class="fe">
-        <ul>
-            <li>fewfew</li>
-            <li>wfeewfwefew</li>
-            <li>fewefwfew</li>
-            <li>efewfew</li>
-            <li>wefwefew</li>
-            <li>efwefwefwef</li>
-            <li>ewfewfewfewf</li>
-            <li>efwfwfewfew</li><li>fewfew</li>
-            <li>wfeewfwefew</li>
-            <li>fewefwfew</li>
-            <li>efewfew</li>
-            <li>wefwefew</li>
-            <li>efwefwefwef</li>
-            <li>ewfewfewfewf</li>
-            <li>efwfwfewfew</li><li>fewfew</li>
-            <li>wfeewfwefew</li>
-            <li>fewefwfew</li>
-            <li>efewfew</li>
-            <li>wefwefew</li>
-            <li>efwefwefwef</li>
-            <li>ewfewfewfewf</li>
-            <li>efwfwfewfew</li>
-        </ul>
+    <div class="dj">点击出现动画</div>
+    <div class="shade"></div>
+    <ul>
+        <li>123</li>
+        <li>456</li>
+        <li>789</li>
+    </ul>
+    <div class="c">
+        <div class="d">fewfwefef</div>
     </div>
     <script src="./jquery.min.js"></script>
     <script>
         window.onload=function(){
-            var i=0;
-            $('.fe li').each(function(index,e){
-                 i+=$(e).width()+105
+            $('.dj').click(function(){
+                $('.shade').fadeIn(200);
+                $('ul').animate({right:0},100)
             });
-            $('.fe ul').width(i);//此处为px，可以在行内式写为rem;
+            $('.shade').click(function(){
+                $(this).fadeOut(200);
+                $('ul').animate({right:"-200px"},100);//可以带单位，也可不带;
+                // $(selector).animate(styles,speed,easing,callback)有四个参数
+            })
         }
     </script>
 </body>
